@@ -2,26 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  --light-black: #0e0e10;
+  background-color: black;
+  color: white;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .transition-smooth {
+    transition: all 300ms ease-in-out;
+  }
+}
+
+:root {
+  --text-gray: #ccc;
+  --light-black: #0e0e10;
+  --primary-color: #eeee2c;
+  --border-color-1: #2c2c2c;
+  --border-color-02: #2d2d2d;
+  scroll-behavior: smooth;
+
+}
+
+@keyframes scrollmm {
+  0% {
+    transform: translateX(00%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scrollmm {
+  animation: scrollmm 150s linear infinite;
+}
+
+@keyframes scrollopposite {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-scrollopposite {
+  animation: scrollopposite 150s linear infinite;
+}
+
+/* Tilted Image Styles */
+.tilted-imagediv {
+  transform: rotate(-8deg);
+}
+
+
+/* Keyframe animation for continuous scrolling */
+@keyframes scrollsection2 {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Apply scroll animation to the carousel container */
+.animate-scroll {
+  animation: scrollsection2 30s linear infinite;
+}
+
+
+/* Change dot color when accordion is open */
+[aria-expanded="true"] .accordion-dot {
+  color: var(--primary-color);
+}
+
+/* Change dot color on hover */
+.AccordionTrigger:hover .accordion-dot {
+  color: var(--primary-color);
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
